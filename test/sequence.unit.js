@@ -398,7 +398,7 @@ test("Normalized Dimensions", function () {
 });
 
 module("Playback");
-/*test("Reference Tests", function () {
+test("Reference Tests", function () {
   
   var expects = 11, 
       count = 0;
@@ -446,7 +446,7 @@ module("Playback");
 
     seq.play();
   });
-  */
+});
 test("Finished Sequence Tests", function () {
   
   var expects = 1, 
@@ -463,7 +463,7 @@ test("Finished Sequence Tests", function () {
   stop(360000);
 
 
-  var seq = Popcorn.sequence( "video-sequence-b", localMediaList ),
+  var seq = Popcorn.sequence( "video-sequence-a", localMediaList ),
       dims = {
         width: 0,
         height: 0
