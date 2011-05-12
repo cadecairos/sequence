@@ -398,7 +398,7 @@ test("Normalized Dimensions", function () {
 });
 
 module("Playback");
-test("Reference Tests", function () {
+/*test("Reference Tests", function () {
   
   var expects = 11, 
       count = 0;
@@ -411,7 +411,7 @@ test("Reference Tests", function () {
     }
   }
 
-  stop(35000);
+  stop(360000);
 
 
   var seq = Popcorn.sequence( "video-sequence-b", mixedSourceList ),
@@ -446,7 +446,42 @@ test("Reference Tests", function () {
 
     seq.play();
   });
+  */
+test("Finished Sequence Tests", function () {
   
+  var expects = 1, 
+      count = 0;
+
+  expect(expects);
+
+  function plus() { 
+    if ( ++count === expects ) {
+      start(); 
+    }
+  }
+
+  stop(360000);
+
+
+  var seq = Popcorn.sequence( "video-sequence-b", localMediaList ),
+      dims = {
+        width: 0,
+        height: 0
+      };
+
+  seq.listen( "pause", function() {
+ 
+    if ( seq.active === seq.playlist.length - 1 && seq.playlist[seq.active].media.currentTime >  seq.clips[seq.active].in ) {
+      equal( Math.floor(seq.playlist[ seq.active ].media.currentTime), seq.clips[ seq.active ].out, "The sequence had ended at the correct time" );
+      plus();
+    }
+  });
+  
+  seq.listen( "loadedmetadata", function( event ) {
+
+    seq.play();
+  });
+
 });
 
 
