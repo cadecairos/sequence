@@ -241,7 +241,7 @@
       $popnext[ nextIdx ? "play" : "pause" ]();
 
       //  Set the previous back to it's beginning time
-      $popprev.currentTime( clips[ idx ].in );
+      //$popprev.currentTime( clips[ idx ].in );
 
       if ( nextIdx ) {
         //  Hide the currently ending video

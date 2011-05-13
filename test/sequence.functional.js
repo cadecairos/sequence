@@ -42,7 +42,38 @@ $(function() {
     $seq;
 
   $seq = Popcorn.sequence( "seq-fixture", clips );
-
+  
+  $seq
+  .footnote({
+    start: 1, 
+    end: $seq.duration(),
+    text: "this footnote starts at 1s and persists for entire sequence<br>",
+    target: "footnote-container"
+  })
+  .footnote({
+    start: 1, 
+    end: $seq.duration() - 2,
+    text: "this footnote appears at :01 and dissappears 2 seconds before the end of the sequence<br>",
+    target: "footnote-container"
+  })
+  .footnote({
+    start: 5, 
+    end: 7,
+    text: "this footnote appears at 5s and dissappears at 7s; spanning 1 clip<br>",
+    target: "footnote-container"
+  })
+  .footnote({
+    start: 3, 
+    end: 6,
+    text: "this footnote appears at 3s and dissappears at 6s; Spanning 2 clips<br>",
+    target: "footnote-container"
+  })
+  .footnote({
+    start: 3, 
+    end: 9,
+    text: "this footnote appears at 3s and dissappears at 9s; Spanning 3 clips<br>",
+    target: "footnote-container"
+  });
 
   $seq.play();
 
